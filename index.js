@@ -7,6 +7,15 @@ const app = express();
 // 포트는 아무거나 가능. 백서버로 둘 포트 번호임.
 const port = 8000;
 
+// mogoose 모듈을 가져와서 내 어플리케이션이랑 연결
+const mongoose = require("mongoose");
+mongoose
+  .connect(
+    "mongodb+srv://rkio:pksy1228@cluster0.xzu9p.mongodb.net/?retryWrites=true&w=majority"
+  )
+  .then(() => console.log("MongoDB Connected..."))
+  .catch((err) => console.log("Error", err));
+
 // root 디렉토리(/)에 Hello World!를 출력되게 해줌
 app.get("/", (req, res) => {
   res.send("Hello World!~~안녕하세요~");
