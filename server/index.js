@@ -46,6 +46,12 @@ app.get("/", (req, res) => {
   res.send("Hello World!~~안녕하세요");
 });
 
+// client와 통신해서 login 정보 가져오기
+app.get("/api/hello", (req, res) => {
+  // client에 send
+  res.send("안녕하세오~");
+});
+
 // User 모델 가져옴
 const { User } = require("./models/User");
 
