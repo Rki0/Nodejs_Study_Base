@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../../_actions/user_action";
 
@@ -9,6 +9,8 @@ function LoginPage() {
   const [email, setEmail] = useState("");
 
   const [pswd, setPswd] = useState("");
+
+  const navigate = useNavigate();
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -26,7 +28,14 @@ function LoginPage() {
       password: pswd,
     };
 
-    dispatch(loginUser(body));
+    // 로그인 성공하면 홈으로 이동
+    dispatch(loginUser(body)).then((response) => {
+      if (response.payload.loginSuccess) {
+        navigate("/");
+      } else {
+        alert("Error");
+      }
+    });
   };
 
   return (

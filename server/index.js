@@ -135,6 +135,7 @@ app.get("/api/users/auth", auth, (req, res) => {
     _id: req.user._id,
     // role이 0이면 일반 유저, 0이 아니면 관리자(이 부분은 User.js에서 임의로 설정했던 것들임)
     isAdmin: req.user.role === 0 ? false : true,
+    isAuth: true,
     email: req.user.email,
     name: req.user.name,
     lastname: req.user.lastname,
